@@ -3,6 +3,12 @@ from rembg import remove
 from PIL import Image
 import io
 import base64
+import os
+
+# your other import and Flask setup code goes above
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 10000)))
 
 app = Flask(__name__)
 
@@ -23,12 +29,3 @@ def remove_background():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=10000)
-import os
-from flask import Flask
-
-app = Flask(__name__)
-
-# Your routes and background remover logic here
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 10000)))
