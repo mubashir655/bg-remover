@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Background Remover</title>
+</head>
+<body>
+  <h1>Remove Background from Image</h1>
+  <input type="file" id="imageInput" />
+  <button onclick="removeBackground()">Upload & Remove</button>
+  <br><br>
+  <img id="result" style="max-width: 300px;" />
+
+  <script>
+    async function removeBackground() {
+      const input = document.getElementById('imageInput');
+      const file = input.files[0];
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const response = await fetch("https://YOUR_BACKEND_URL/remove-background", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      document.getElementById('result').src = "data:image/png;base64," + data.image;
+    }
+  </script>
+</body>
+</html>
