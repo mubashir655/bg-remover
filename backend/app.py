@@ -23,3 +23,10 @@ def remove_background():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=10000)
+import os
+# other import statements...
+
+# your Flask code...
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 10000)))
